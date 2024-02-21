@@ -4,6 +4,7 @@ import static com.example.primeiraaplicacao.R.id.edtIdade;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -36,17 +37,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 tvResult.setText("Bem vindo " + edtPrimeiroNome.getText() + " " + edtSegundoNome.getText() +"\n Você tem " + edtIdade.getText() +" de idade");
 
+                //comando para fechar o teclado após a digitação
+                InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                if(imm.isActive())
+                    imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+
             }
         });
 
-        bttApresentar.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (false == hasFocus){
 
-                }
-            }
-        });
 
         btnFechar.setOnClickListener(new View.OnClickListener() {
             @Override
